@@ -1,0 +1,43 @@
+function packImage()
+ row = 600;
+ column = 800;
+ 
+ pitch1I = zeros(row,column,11);
+ pitch2I = zeros(row,column,11);
+ 
+ pitch1 = 60;
+ pitch2 = 66;
+ for i=1:11
+     fileNamer = sprintf('stucki%d_%d.bmp',pitch1,i);
+     image = imread(fileNamer);
+     
+     packImageWorker(image,image,image,
+ end
+ image1 = imread('stucki60_1.bmp');
+ packImageWorker(image1,image1,image1,'image1.bmp');
+ image2 = imread('stucki60_2.bmp');
+ packImageWorker(image2,image2,image2,'image2.bmp');
+ image3 = imread('stucki60_3.bmp');
+ packImageWorker(image3,image3,image3,'image3.bmp');
+ image4 = imread('stucki66_1.bmp');
+ packImageWorker(image4,image4,image4,'image4.bmp');
+ image5 = imread('stucki66_2.bmp');
+ packImageWorker(image5,image5,image5,'image5.bmp');
+ image6 = imread('stucki66_3.bmp');
+ packImageWorker(image6,image6,image6,'image6.bmp');
+
+
+end
+
+
+
+function rgbImage = packImageWorker(image1,image2,image3,outputname)
+    [a,b] = size(image1);
+    rgbImage = zeros(a,b,3);
+    rgbImage(:,:,1) = image1;
+    rgbImage(:,:,2) = image2;
+    rgbImage(:,:,3) = image3;
+    imwrite(rgbImage,outputname,'bmp');
+    
+    
+end
